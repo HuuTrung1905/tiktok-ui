@@ -9,21 +9,21 @@ function Button({
     href,
     primary = false,
     outline = false,
-    disabled = false,
     text = false,
     rounded = false,
+    disabled = false,
     small = false,
     large = false,
     children,
     className,
     leftIcon,
     rightIcon,
-    onclick,
+    onClick,
     ...passProps
 }) {
     let Comp = 'button';
     const props = {
-        onclick,
+        onClick,
         ...passProps,
     };
 
