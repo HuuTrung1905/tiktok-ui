@@ -1,12 +1,14 @@
+import PropTypes from 'prop-types';
+
 import { useState, forwardRef } from 'react';
 import image from '~/assets/images';
 import classNames from 'classnames';
 import styles from './Image.module.scss';
-const Image = forwardRef(({ src, alt, className, ...props }, ref) => {
+const Image = forwardRef(({ src, alt, fallback: customFallback = image.noImage, className, ...props }, ref) => {
     const [fallback, setFallback] = useState('');
 
     const handleError = () => {
-        setFallback(image.noImage);
+        setFallback(customFallback);
     };
 
     // eslint-disable-next-line jsx-a11y/alt-text
@@ -21,5 +23,12 @@ const Image = forwardRef(({ src, alt, className, ...props }, ref) => {
         />
     );
 });
+
+Image.propTypes = {
+    src: PropTypes.string,
+    alt: PropTypes.string,
+    fallback: PropTypes.string,
+    className: PropTypes.string,
+};
 
 export default Image;
